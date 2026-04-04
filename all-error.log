@@ -1,0 +1,31 @@
+
+> week-25@ dev C:\Projects\devops\week-25
+> turbo run dev
+
+ΓÇó turbo 2.8.17
+ΓÇó Packages in scope: @repo/db, @repo/eslint-config, @repo/typescript-config, @repo/ui, http-server, web, ws-server
+ΓÇó Running dev in 7 packages
+ΓÇó Remote caching disabled
+ws-server:dev: cache bypass, force executing cbfb9194b7a2cf1c
+web:dev: cache bypass, force executing 5d7632cf82ca629b
+http-server:dev: cache bypass, force executing 0a3eedad1a6dfd01
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 dev C:\Projects\devops\week-25\apps\http-server
+http-server:dev: > npm run build && npm run start
+http-server:dev: 
+web:dev: 
+web:dev: > web@0.1.0 dev C:\Projects\devops\week-25\apps\web
+web:dev: > next dev --port 3000
+web:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 dev C:\Projects\devops\week-25\apps\ws-server
+ws-server:dev: > npm run build && npm run start
+ws-server:dev: 
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 build
+http-server:dev: > tsc -b
+http-server:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 build
+ws-server:dev: > tsc -b
+ws-server:dev: 

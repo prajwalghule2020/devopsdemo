@@ -1,0 +1,24 @@
+
+> web@0.1.0 build C:\Projects\devops\week-25\apps\web
+> next build
+
+Γû▓ Next.js 16.2.0 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 1295ms
+  Running TypeScript ...
+  Finished TypeScript in 1387ms ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/3) ...
+Γ£ô Generating static pages using 5 workers (3/3) in 409ms
+  Finalizing page optimization ...
+
+Route (app)
+Γöî ╞Æ /
+Γöö Γùï /_not-found
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

@@ -1,0 +1,76 @@
+
+> week-25@ dev C:\Projects\devops\week-25
+> turbo run dev
+
+ΓÇó turbo 2.8.17
+ΓÇó Packages in scope: @repo/db, @repo/eslint-config, @repo/typescript-config, @repo/ui, http-server, web, ws-server
+ΓÇó Running dev in 7 packages
+ΓÇó Remote caching disabled
+@repo/db:build: cache miss, executing 8a721eeda4fb34fd
+@repo/db:build: 
+@repo/db:build: > @repo/db@1.0.0 build C:\Projects\devops\week-25\packages\prisma
+@repo/db:build: > npx prisma generate && tsc -b
+@repo/db:build: 
+@repo/db:build: Environment variables loaded from .env
+@repo/db:build: Prisma schema loaded from prisma\schema.prisma
+@repo/db:build: 
+@repo/db:build: Γ£ö Generated Prisma Client (v6.3.0) to .\..\..\node_modules\.pnpm\@prisma+client@6.3.0_prisma@6.3.0_typescript@5.9.2__typescript@5.9.2\node_modules\@prisma\client in 30ms
+@repo/db:build: 
+@repo/db:build: Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+@repo/db:build: 
+@repo/db:build: Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+@repo/db:build: 
+ws-server:dev: cache bypass, force executing 4ff2ed4551e85bf1
+http-server:dev: cache bypass, force executing 379f1e9f9e8c6791
+web:dev: cache bypass, force executing 27d2e9eb33ad9cec
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 dev C:\Projects\devops\week-25\apps\ws-server
+ws-server:dev: > npm run build && npm run start
+ws-server:dev: 
+web:dev: 
+web:dev: > web@0.1.0 dev C:\Projects\devops\week-25\apps\web
+web:dev: > next dev --port 3000
+web:dev: 
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 dev C:\Projects\devops\week-25\apps\http-server
+http-server:dev: > npm run build && npm run start
+http-server:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 build
+ws-server:dev: > tsc -b
+ws-server:dev: 
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 build
+http-server:dev: > tsc -b
+http-server:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 start
+ws-server:dev: > node dist/index.js
+ws-server:dev: 
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 start
+http-server:dev: > node dist/index.js
+http-server:dev: 
+web:dev: Γ¿» Failed to start server
+web:dev: Error: listen EADDRINUSE: address already in use :::3000
+web:dev:     at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+web:dev:     at new Promise (<anonymous>) {
+web:dev:   code: 'EADDRINUSE',
+web:dev:   errno: -4091,
+web:dev:   syscall: 'listen',
+web:dev:   address: '::',
+web:dev:   port: 3000
+web:dev: }
+web:dev: [?25h
+web:dev: ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
+web:dev: ERROR: command finished with error: command (C:\Projects\devops\week-25\apps\web) C:\Users\hp\AppData\Local\pnpm\.tools\@pnpm+win-x64\9.0.0\bin\pnpm.CMD run dev exited (1)
+web#dev: command (C:\Projects\devops\week-25\apps\web) C:\Users\hp\AppData\Local\pnpm\.tools\@pnpm+win-x64\9.0.0\bin\pnpm.CMD run dev exited (1)
+
+ Tasks:    1 successful, 4 total
+Cached:    0 cached, 4 total
+  Time:    4.142s 
+Failed:    web#dev
+
+ WARNING  no output files found for task @repo/db#build. Please check your `outputs` key in `turbo.json`
+ ERROR  run failed: command  exited (1)
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

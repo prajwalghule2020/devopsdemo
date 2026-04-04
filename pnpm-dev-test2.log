@@ -1,0 +1,89 @@
+
+> week-25@ dev C:\Projects\devops\week-25
+> turbo run dev
+
+ΓÇó turbo 2.8.17
+ΓÇó Packages in scope: @repo/db, @repo/eslint-config, @repo/typescript-config, @repo/ui, http-server, web, ws-server
+ΓÇó Running dev in 7 packages
+ΓÇó Remote caching disabled
+@repo/db:build: cache hit, replaying logs 299285e980b089e2
+@repo/db:build: [6n[?9001h[?1004h[m]0;C:\Users\hp\AppData\Local\pnpm\pnpm.exe[?25h[?25l
+@repo/db:build: > @repo/db@1.0.0 build C:\Projects\devops\week-25\packages\prisma
+@repo/db:build: > npx prisma generate && tsc -b[5;1H[?25h]0;npm]0;npm exec prisma generate[K[2mEnvironment variables loaded from .env
+@repo/db:build: [22m[2mPrisma schema loaded from prisma\schema.prisma
+@repo/db:build: [?25l[22m
+@repo/db:build: Γ£ö Generated [1mPrisma Client[22m (v6.3.0)[2m to .\..\..\node_modules\.pnpm\@prisma+client@6.3.0_prisma@6.3.0_typescript@5.9.2__typescript@5.9.2\node_modules\@prisma\client[22m in 35ms[11;1HStart by importing your Prisma Client (See: https://pris.ly/d/importing-client)[13;1HTip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+@repo/db:build: [?25h
+@repo/db:build: 
+@repo/db:build: [K[?9001l[?1004l
+ws-server:dev: cache bypass, force executing 82ec03025816df08
+web:dev: cache bypass, force executing f7557ac250a2a5ec
+http-server:dev: cache bypass, force executing afdc37e8e3da087f
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 dev C:\Projects\devops\week-25\apps\ws-server
+ws-server:dev: > npm run build && npm run start
+ws-server:dev: 
+web:dev: 
+web:dev: > web@0.1.0 dev C:\Projects\devops\week-25\apps\web
+web:dev: > next dev --port 3000
+web:dev: 
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 dev C:\Projects\devops\week-25\apps\http-server
+http-server:dev: > npm run build && npm run start
+http-server:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 build
+ws-server:dev: > tsc -b
+ws-server:dev: 
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 build
+http-server:dev: > tsc -b
+http-server:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 start
+ws-server:dev: > node dist/index.js
+ws-server:dev: 
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 start
+http-server:dev: > node dist/index.js
+http-server:dev: 
+web:dev: Γû▓ Next.js 16.2.0 (Turbopack)
+web:dev: - Local:         http://localhost:3000
+web:dev: - Network:       http://192.168.1.38:3000
+web:dev: - Environments: .env.local
+web:dev: Γ£ô Ready in 510ms
+http-server:dev: node:events:496
+http-server:dev:       throw er; // Unhandled 'error' event
+http-server:dev:       ^
+http-server:dev: 
+http-server:dev: Error: listen EADDRINUSE: address already in use :::3000
+http-server:dev:     at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+http-server:dev:     at listenInCluster (node:net:1996:12)
+http-server:dev:     at Server.listen (node:net:2101:7)
+http-server:dev:     at Function.listen (C:\Projects\devops\week-25\node_modules\.pnpm\express@5.2.1\node_modules\express\lib\application.js:605:24)
+http-server:dev:     at file:///C:/Projects/devops/week-25/apps/http-server/dist/index.js:22:5
+http-server:dev:     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+http-server:dev:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+http-server:dev:     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+http-server:dev: Emitted 'error' event on Server instance at:
+http-server:dev:     at emitErrorNT (node:net:1975:8)
+http-server:dev:     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+http-server:dev:   code: 'EADDRINUSE',
+http-server:dev:   errno: -4091,
+http-server:dev:   syscall: 'listen',
+http-server:dev:   address: '::',
+http-server:dev:   port: 3000
+http-server:dev: }
+http-server:dev: 
+http-server:dev: Node.js v22.16.0
+http-server:dev: ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
+http-server:dev: ERROR: command finished with error: command (C:\Projects\devops\week-25\apps\http-server) C:\Users\hp\AppData\Local\pnpm\.tools\@pnpm+win-x64\9.0.0\bin\pnpm.CMD run dev exited (1)
+http-server#dev: command (C:\Projects\devops\week-25\apps\http-server) C:\Users\hp\AppData\Local\pnpm\.tools\@pnpm+win-x64\9.0.0\bin\pnpm.CMD run dev exited (1)
+
+ Tasks:    1 successful, 4 total
+Cached:    1 cached, 4 total
+  Time:    1.132s 
+Failed:    http-server#dev
+
+ ERROR  run failed: command  exited (1)
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

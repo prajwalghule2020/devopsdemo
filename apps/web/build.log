@@ -1,0 +1,36 @@
+
+> web@0.1.0 build C:\Projects\devops\week-25\apps\web
+> next build
+
+Γû▓ Next.js 16.2.0 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 1211ms
+  Running TypeScript ...
+  Finished TypeScript in 1332ms ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4) 
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+Error [PrismaClientInitializationError]: 
+Invalid `prisma.user.findFirst()` invocation:
+
+
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+    at <unknown> (-->  schema.prisma:7)
+    at async d (C:\Projects\devops\week-25\apps\web\.next\server\chunks\ssr\[root-of-the-server]__0.rpsg2._.js:1:584) {
+  clientVersion: '6.3.0',
+  errorCode: undefined,
+  digest: '3887424817'
+}
+Export encountered an error on /page: /, exiting the build.
+Γ¿» Next.js build worker exited with code: 1 and signal: null
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

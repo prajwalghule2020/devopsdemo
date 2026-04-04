@@ -1,0 +1,19 @@
+
+> week-25@ dev C:\Projects\devops\week-25
+> turbo run dev "--filter" "web"
+
+ΓÇó turbo 2.8.17
+ΓÇó Packages in scope: web
+ΓÇó Running dev in 1 packages
+ΓÇó Remote caching disabled
+web:dev: cache bypass, force executing 5d7632cf82ca629b
+web:dev: 
+web:dev: > web@0.1.0 dev C:\Projects\devops\week-25\apps\web
+web:dev: > next dev --port 3000
+web:dev: 
+web:dev: Γû▓ Next.js 16.2.0 (Turbopack)
+web:dev: - Local:         http://localhost:3000
+web:dev: - Network:       http://192.168.1.38:3000
+web:dev: - Environments: .env.local
+web:dev: Γ£ô Ready in 454ms
+web:dev: 

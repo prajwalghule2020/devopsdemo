@@ -1,0 +1,56 @@
+
+> week-25@ dev C:\Projects\devops\week-25
+> turbo run dev
+
+ΓÇó turbo 2.8.17
+ΓÇó Packages in scope: @repo/db, @repo/eslint-config, @repo/typescript-config, @repo/ui, http-server, web, ws-server
+ΓÇó Running dev in 7 packages
+ΓÇó Remote caching disabled
+@repo/db:build: cache hit, replaying logs 299285e980b089e2
+@repo/db:build: [6n[?9001h[?1004h[m]0;C:\Users\hp\AppData\Local\pnpm\pnpm.exe[?25h[?25l
+@repo/db:build: > @repo/db@1.0.0 build C:\Projects\devops\week-25\packages\prisma
+@repo/db:build: > npx prisma generate && tsc -b[5;1H[?25h]0;npm]0;npm exec prisma generate[K[2mEnvironment variables loaded from .env
+@repo/db:build: [22m[2mPrisma schema loaded from prisma\schema.prisma
+@repo/db:build: [?25l[22m
+@repo/db:build: Γ£ö Generated [1mPrisma Client[22m (v6.3.0)[2m to .\..\..\node_modules\.pnpm\@prisma+client@6.3.0_prisma@6.3.0_typescript@5.9.2__typescript@5.9.2\node_modules\@prisma\client[22m in 35ms[11;1HStart by importing your Prisma Client (See: https://pris.ly/d/importing-client)[13;1HTip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+@repo/db:build: [?25h
+@repo/db:build: 
+@repo/db:build: [K[?9001l[?1004l
+ws-server:dev: cache bypass, force executing 82ec03025816df08
+http-server:dev: cache bypass, force executing 2b4c9c86d3c501b1
+web:dev: cache bypass, force executing f7557ac250a2a5ec
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 dev C:\Projects\devops\week-25\apps\http-server
+http-server:dev: > npm run build && npm run start
+http-server:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 dev C:\Projects\devops\week-25\apps\ws-server
+ws-server:dev: > npm run build && npm run start
+ws-server:dev: 
+web:dev: 
+web:dev: > web@0.1.0 dev C:\Projects\devops\week-25\apps\web
+web:dev: > next dev --port 3000
+web:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 build
+ws-server:dev: > tsc -b
+ws-server:dev: 
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 build
+http-server:dev: > tsc -b
+http-server:dev: 
+ws-server:dev: 
+ws-server:dev: > ws-server@1.0.0 start
+ws-server:dev: > node dist/index.js
+ws-server:dev: 
+web:dev: Γû▓ Next.js 16.2.0 (Turbopack)
+web:dev: - Local:         http://localhost:3000
+web:dev: - Network:       http://192.168.1.38:3000
+web:dev: - Environments: .env.local
+web:dev: Γ£ô Ready in 583ms
+http-server:dev: 
+http-server:dev: > http-server@1.0.0 start
+http-server:dev: > node dist/index.js
+http-server:dev: 
+http-server:dev: http-server running on port 3002
+web:dev: 
