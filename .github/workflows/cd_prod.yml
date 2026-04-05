@@ -1,0 +1,69 @@
+name: CD Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: cd-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 100.30.225.142
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+
+            cd /home/ubuntu/devopsdemo
+
+            git fetch origin main
+            git checkout main
+            git pull --ff-only origin main
+
+            corepack enable
+            corepack prepare pnpm@9.0.0 --activate
+
+            pnpm install --frozen-lockfile
+            pnpm build
+
+            if ! command -v pm2 >/dev/null 2>&1; then
+              echo "PM2 is required on the server. Install with: npm i -g pm2"
+              exit 1
+            fi
+
+            if pm2 describe fe-server >/dev/null 2>&1; then
+              pm2 restart fe-server --update-env
+            elif pm2 describe web >/dev/null 2>&1; then
+              pm2 restart web --update-env
+            else
+              pm2 start "pnpm --filter web start" --name fe-server
+            fi
+
+            if pm2 describe http-server >/dev/null 2>&1; then
+              pm2 restart http-server --update-env
+            else
+              pm2 start "pnpm --filter http-server start" --name http-server
+            fi
+
+            if pm2 describe ws-server >/dev/null 2>&1; then
+              pm2 restart ws-server --update-env
+            else
+              pm2 start "pnpm --filter ws-server start" --name ws-server
+            fi
+
+            pm2 save
