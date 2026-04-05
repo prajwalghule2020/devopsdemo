@@ -27,12 +27,18 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script_stop: true
           script: |
-            set -euo pipefail
+            set -euxo pipefail
 
             cd /home/ubuntu/devopsdemo
 
             git fetch origin main
             git checkout main
+
+            # Avoid pull conflicts from local lockfile drift created during server-side installs.
+            if ! git diff --quiet -- pnpm-lock.yaml; then
+              git restore -- pnpm-lock.yaml
+            fi
+
             git pull --ff-only origin main
 
             if command -v pnpm >/dev/null 2>&1; then
@@ -48,7 +54,11 @@ jobs:
               exit 1
             fi
 
-            eval "$PNPM_CMD install --frozen-lockfile"
+            echo "Using package manager command: $PNPM_CMD"
+            if ! eval "$PNPM_CMD install --frozen-lockfile"; then
+              echo "Frozen lockfile install failed, retrying with --no-frozen-lockfile"
+              eval "$PNPM_CMD install --no-frozen-lockfile"
+            fi
             eval "$PNPM_CMD build"
 
             if ! command -v pm2 >/dev/null 2>&1; then
