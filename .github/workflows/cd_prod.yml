@@ -39,11 +39,25 @@ jobs:
               . "$HOME/.bashrc"
             fi
             if [ -s "$HOME/.nvm/nvm.sh" ]; then
-              . "$HOME/.nvm/nvm.sh"
-              if command -v nvm >/dev/null 2>&1; then
-                nvm use --lts >/dev/null 2>&1 || nvm install --lts
+              . "$HOME/.nvm/nvm.sh" || true
+            fi
+
+            # Prefer the newest installed nvm Node binary in non-interactive shells.
+            if [ -d "$HOME/.nvm/versions/node" ]; then
+              LATEST_NODE_BIN="$(ls -1d "$HOME/.nvm/versions/node"/v*/bin 2>/dev/null | sort -V | tail -n 1 || true)"
+              if [ -n "${LATEST_NODE_BIN:-}" ]; then
+                export PATH="$LATEST_NODE_BIN:$PATH"
               fi
             fi
+
+            # If npm is still missing, attempt nvm activation but do not fail here.
+            if ! command -v npm >/dev/null 2>&1 && command -v nvm >/dev/null 2>&1; then
+              nvm install --lts >/dev/null 2>&1 || true
+              nvm use --lts >/dev/null 2>&1 || true
+              hash -r
+            fi
+
+            echo "Tool paths: node=$(command -v node || echo missing), npm=$(command -v npm || echo missing), pnpm=$(command -v pnpm || echo missing), pm2=$(command -v pm2 || echo missing)"
 
             git fetch origin main
             git checkout main
