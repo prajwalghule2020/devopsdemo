@@ -35,11 +35,21 @@ jobs:
             git checkout main
             git pull --ff-only origin main
 
-            corepack enable
-            corepack prepare pnpm@9.0.0 --activate
+            if command -v pnpm >/dev/null 2>&1; then
+              PNPM_CMD="pnpm"
+            elif command -v corepack >/dev/null 2>&1; then
+              corepack enable
+              corepack prepare pnpm@9.0.0 --activate
+              PNPM_CMD="pnpm"
+            elif command -v npm >/dev/null 2>&1; then
+              PNPM_CMD="npx pnpm@9.0.0"
+            else
+              echo "pnpm/corepack/npm not found. Install Node.js (18+) on the server."
+              exit 1
+            fi
 
-            pnpm install --frozen-lockfile
-            pnpm build
+            eval "$PNPM_CMD install --frozen-lockfile"
+            eval "$PNPM_CMD build"
 
             if ! command -v pm2 >/dev/null 2>&1; then
               echo "PM2 is required on the server. Install with: npm i -g pm2"
@@ -51,19 +61,19 @@ jobs:
             elif pm2 describe web >/dev/null 2>&1; then
               pm2 restart web --update-env
             else
-              pm2 start "pnpm --filter web start" --name fe-server
+              pm2 start bash --name fe-server -- -lc "$PNPM_CMD --filter web start"
             fi
 
             if pm2 describe http-server >/dev/null 2>&1; then
               pm2 restart http-server --update-env
             else
-              pm2 start "pnpm --filter http-server start" --name http-server
+              pm2 start bash --name http-server -- -lc "$PNPM_CMD --filter http-server start"
             fi
 
             if pm2 describe ws-server >/dev/null 2>&1; then
               pm2 restart ws-server --update-env
             else
-              pm2 start "pnpm --filter ws-server start" --name ws-server
+              pm2 start bash --name ws-server -- -lc "$PNPM_CMD --filter ws-server start"
             fi
 
             pm2 save
