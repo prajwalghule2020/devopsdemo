@@ -31,6 +31,20 @@ jobs:
 
             cd /home/ubuntu/devopsdemo
 
+            # Non-interactive shells may miss PATH customizations (nvm, npm, pm2).
+            if [ -f "$HOME/.profile" ]; then
+              . "$HOME/.profile"
+            fi
+            if [ -f "$HOME/.bashrc" ]; then
+              . "$HOME/.bashrc"
+            fi
+            if [ -s "$HOME/.nvm/nvm.sh" ]; then
+              . "$HOME/.nvm/nvm.sh"
+              if command -v nvm >/dev/null 2>&1; then
+                nvm use --lts >/dev/null 2>&1 || nvm install --lts
+              fi
+            fi
+
             git fetch origin main
             git checkout main
 
